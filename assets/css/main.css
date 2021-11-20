@@ -2370,6 +2370,28 @@ input, select, textarea {
 
 			}
 
+		.image.main2 {
+			display: block;
+			margin: 0 0 3em 0;
+			/* width: 100%; */
+			/* max-height:3cm; */
+			max-width: 4cm;
+		}
+
+			.image.main2 img {
+				width: 100%;
+				/* height:100% */
+			}
+
+			@media screen and (max-width: 736px) {
+
+				.image.main2 {
+					margin: 0 0 2em 0;
+				}
+
+			}
+		
+
 /* Table */
 
 	.table-wrapper {
@@ -2634,7 +2656,7 @@ input, select, textarea {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+					/* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E"); */
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
@@ -2705,12 +2727,12 @@ input, select, textarea {
 						margin-bottom: 0;
 					}
 
-			.tiles article.style1 > .image:before {
-				background-image: url(images\userTestPicture.png);
-				/*background-color: #000000;*/
-			}
+			/* .tiles article.style1 > .image:before {
+				/* background-image: url(images\userTestPicture.png); 
+				background-color: #00000017;
+			} */
 
-			.tiles article.style2 > .image:before {
+			/* .tiles article.style2 > .image:before {
 				background-color: #7ecaf6;
 			}
 
@@ -2728,7 +2750,7 @@ input, select, textarea {
 
 			.tiles article.style6 > .image:before {
 				background-color: #8499e7;
-			}
+			} */
 
 			body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.1);
@@ -2739,7 +2761,7 @@ input, select, textarea {
 
 				body:not(.is-touch) .tiles article:hover > .image:before {
 					background-color: #333333;
-					opacity: 0.35;
+					opacity: 0.5;
 				}
 
 				body:not(.is-touch) .tiles article:hover > .image:after {
