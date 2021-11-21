@@ -2701,6 +2701,7 @@ input, select, textarea {
 				border-radius: 4px;
 				border-bottom: 0;
 				color: #ffffff;
+				
 				text-align: center;
 				text-decoration: none;
 				z-index: 3;
@@ -2716,6 +2717,7 @@ input, select, textarea {
 
 				.tiles article > a h2 {
 					margin: 0;
+					text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 				}
 
 				.tiles article > a .content {
