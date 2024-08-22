@@ -182,4 +182,10 @@
 
 			});
 
+
+
+			$(document).ready(function() {
+				$.contentFilter('#ProjectTagFilter');
+			});
+
 })(jQuery);

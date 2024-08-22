@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+
+<style>
+    /* Relevant CSS for filtering */
+    .filter-categories span { display:inline-block; padding:0.25em 0; white-space:nowrap }
+    .filter-text, .filter-label { font-size:0.75em }
+    .filter-label { margin-right:1em; padding:0.35em 0.5em; background:#ddd; border-radius:0.25em }
+    .filter-wrap { display:-webkit-flexbox; display:-ms-flexbox; display:flex; flex-wrap:wrap; position:relative; overflow:hidden; margin:1.5em -0.75% 2em; font-size:0.9375em }
+    .filter-item { display:-webkit-flexbox; display:-ms-flexbox; display:flex; flex-direction:column; width:46.5%; padding:2% 1%; margin:0.75vw 0.75%; text-align:center; background:#333; color:#fff }
+    .filter-item span { display:block; text-align:right; font-size:0.875em; color:#ccc; padding-right:5% }
+    .filter-item b { display:block; font-size:0.9375em; margin:1em 0 0.5em }
+    .filter-item b:before, .filter-item b:after { content:'~'; font-weight:normal }
+    .filter-item p { font-size:0.75em; color:#ccc; -webkit-flex:1 0 auto; -ms-flex:1 0 auto; flex:1 0 auto }
+    .filter-item i { font-size:0.9375em; font-weight:bold; margin-top:0.25em; }
+    .filter-item ul { list-style-type:none; margin-left:0; margin-top:2em; padding:0; font-size:0.75em; color:#000 }
+    .filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
+    .info-mild { background:#6cf }
+    .info-med { background:#f93 }
+    .info-hot { background:#f33 }
+    .info-spec { background:#fc3 }
+    .info-veg { background:#6c3 }
+
+    .filtered-inclusive .filter-item, .filter-no-item { display:none } /* filtered-inclusive/filtered-exclusive class applied via js */
+    .filtered-inclusive .filter-item.selected { display:-webkit-flexbox; display:-ms-flexbox; display:flex } /* selected class applied via js */ 
+    .filter-no-item.filter-no-item-active { display:block; width:100%; background:#fcc; color:red; padding:1em 1.5em; margin:0.75% }
+    .filter-mask-active { position:absolute; top:0; left:0; bottom:0; right:0; -webkit-animation:filterMask 1s ease-in-out both; animation:filterMask 1s ease-in-out both }
+    @-webkit-keyframes filterMask { 
+      0% { background:transparent } 
+      50% { background:#fff } 
+      100% { background:transparent } 
+    }
+    @keyframes filterMask { 
+      0% { background:transparent } 
+      50% { background:#fff } 
+      100% { background:transparent } 
+    }
+
+    @media(min-width:40em) { 
+      .filter-text, .filter-label, .filter-wrap { font-size:0.875em }
+      .filter-item { width:29.75% }
+    }
+
+    @media(min-width:56em) { 
+      .filter-text, .filter-label, .filter-wrap { font-size:1em } 
+      .filter-item { width:21.5% }
+    }
+
+    @media(min-width:64em) {
+      .filter-item { margin:0.5em 0.75% }
+    }
+  </style>
+
+<!--[if IE 9]>
+<style>
+.filtered-exclusive .filter-item:not(.selected) { display:block }
+</style>
+<![endif]-->
+
+<!--[if gte IE 8]>
+<style>
+.filtered-inclusive .filter-item.selected { display:block }
+.filter-text, .filter-label, .filter-wrap { font-size:1em } 
+.filter-item { float:left; width:21.5% }
+</style>
+<![endif]-->
+
+<body>
+
+
+    <body>
+
+        <div class="page-content">
+      
+          <section id="ProjectTagFilter">
+            <span class="filter-categories">
+              <span class="filter-text">Filter:</span> 
+              <span><input type="checkbox" id="filter-all-1" class="filter-input filter-all" name="filter-1" checked /><label for="filter-all-1" class="filter-label">All</label></span> 
+              <span><input type="checkbox" id="mild-1" class="filter-input" name="filter-1" /><label for="mild-1" class="filter-label info-mild">Mild</label></span> 
+              <span><input type="checkbox" id="med-1" class="filter-input" name="filter-1" /><label for="med-1" class="filter-label info-med">Medium</label></span>
+              <span><input type="checkbox" id="hot-1" class="filter-input" name="filter-1" /><label for="hot-1" class="filter-label info-hot">Hot</label></span> 
+              <span><input type="checkbox" id="veg-1" class="filter-input" name="filter-1"/><label for="veg-1" class="filter-label info-veg">Veg</label></span> 
+              <span><input type="checkbox" id="special-1" class="filter-input" name="filter-1"/><label for="special-1" class="filter-label info-spec">Special</label></span> 
+            </span>
+      
+            <section class="filter-wrap">
+              <div class="filter-item starter-1 mild-1 veg-1">
+                <b> Veg Samosa </b>
+                <p>Crispy fried pastry shells with a savoury filling of spiced potatoes and peas (2 pieces).</p>
+                <i>£2.75</i>
+                <ul>
+                  <li class="info-mild">Mild</li>
+                  <li class="info-veg">Veg</li>
+                </ul>
+              </div>
+              <div class="filter-item starter-1 hot-1 veg-1 special-1">
+                <b> Cut Mirchi </b>
+                <p>Julienned pepper covered in rice flour, fried to a crisp and sprinkled with onion.</p>
+                <i>£4.95</i>
+                <ul>
+                  <li class="info-hot">Hot</li>
+                  <li class="info-veg">Veg</li>
+                  <li class="info-spec">Special</li>
+                </ul>
+              </div>
+              <div class="filter-item starter-1 mild-1 special-1">
+                <b> Prawn Pakora </b>
+                <p>Jumbo prawns dipped in a spiced chickpea flour, and fried.</p>
+                <i>£10.75</i>
+                <ul>
+                  <li class="info-mild">Mild</li>
+                  <li class="info-spec">Special</li>
+                </ul>
+              </div>
+              <div class="filter-item starter-1 hot-1">
+                <b> Chili Chicken </b>
+                <p>Crispy fried boneless chunks of chicken, tossed in a hot pepper sauce.</p>
+                <i>£7.95</i>
+                <ul>
+                  <li class="info-hot">Hot</li>
+                </ul>
+              </div>
+              <div class="filter-item main-1 med-1">
+                <b> Rogan Josh </b>
+                <p>Cubes of lamb simmered with onions, tomatoes and spices, in a sealed pot.</p>
+                <i>£13.95</i>
+                <ul>
+                  <li class="info-med">Medium</li>
+                </ul>
+              </div>
+              <div class="filter-item main-1 hot-1 special-1">
+                <b> Lamb Vindaloo </b>
+                <p>Boneless lamb and potatoes sautéed with cumin, onion, tomatoes, and lemon juice.</p>
+                <i>£14.95</i>
+                <ul>
+                  <li class="info-hot">Hot</li>
+                  <li class="info-spec">Special</li>
+                </ul>
+              </div>
+              <div class="filter-item main-1 mild-1">
+                <b> Tikka Masala </b>
+                <p>Marinated boneless chicken, grilled and sautéed in a tomato sauce, with ginger and coriander.</p>
+                <i>£13.50</i>
+                <ul>
+                  <li class="info-mild">Mild</li>
+                </ul>
+              </div>
+              <div class="filter-item main-1 mild-1 veg-1">
+                <b> Aloo Gobhi </b>
+                <p>Cauliflower and potatoes, sautéed to perfection, in mild spices with tomatoes, onion and garlic.</p>
+                <i>£9.95</i>
+                <ul>
+                  <li class="info-mild">Mild</li>
+                  <li class="info-veg">Veg</li>
+                </ul>
+              </div>
+              <div class="filter-no-item">Sorry, no items match your filter selection(s).</div>
+              <div class="filter-mask"></div> <!-- mask is last -->
+            </section>
+        </section>
+      
+        </div><!-- closing ".page-content" -->
+
+<script>
+// Helper functions for class manipulation
+function addClassAll(elements, className) {
+    elements.forEach(element => {
+      if (!element.classList.contains(className)) {
+        element.classList.add(className);
+      }
+    });
+  }
+
+  function delClassAll(elements, className) {
+    elements.forEach(element => {
+      element.classList.remove(className);
+    });
+  }
+
+  // Content filtering function
+  function contentFilter(filterId) {
+    const filterElement = document.querySelector(filterId);
+    const categoriesContainer = filterElement.querySelector('.filter-categories');
+    const filterWrap = filterElement.querySelectorAll('.filter-wrap');
+    const filterItems = filterElement.querySelectorAll('.filter-item');
+    const filterInputs = filterElement.querySelectorAll('.filter-input');
+    const noItemElement = filterElement.querySelector('.filter-no-item');
+    const filterMask = filterElement.querySelector('.filter-mask');
+
+    categoriesContainer.addEventListener('click', (event) => {
+      const clickedElement = event.target;
+      const selectedFilters = [];
+
+      // Visual feedback
+      addClassAll([filterMask], 'filter-mask-active');
+      setTimeout(() => {
+        delClassAll([filterMask], 'filter-mask-active');
+      }, 1000);
+
+      if (clickedElement.classList.contains('filter-all')) {
+        // Uncheck all other filters
+        filterInputs.forEach((input, index) => {
+          if (index !== 0) {
+            input.checked = false;
+          }
+        });
+
+        // Reset filter state
+        setTimeout(() => {
+          delClassAll(filterItems, 'selected');
+          delClassAll(filterWrap, 'filtered-inclusive');
+          delClassAll([noItemElement], 'filter-no-item-active');
+        }, 500);
+
+      } else {
+        // Uncheck "Filter All"
+        filterInputs[0].checked = false;
+
+        // Collect checked filter IDs
+        filterInputs.forEach((input, index) => {
+          if (index !== 0 && input.checked) {
+            selectedFilters.push(input.id);
+          }
+        });
+
+        // Update filter state based on inclusive filter type
+        setTimeout(() => {
+          delClassAll(filterItems, 'selected');
+          addClassAll(filterWrap, 'filtered-inclusive');
+
+          if (selectedFilters.length > 0) {
+            addClassAll(filterElement.querySelectorAll(`.filter-item.${selectedFilters.join('.')}`), 'selected');
+          }
+
+          if (filterElement.querySelectorAll('.selected').length === 0) {
+            addClassAll([noItemElement], 'filter-no-item-active');
+          } else {
+            delClassAll([noItemElement], 'filter-no-item-active');
+          }
+
+          // Check if any filters are selected and re-check "Filter All"
+          const checkedCount = filterInputs.reduce((count, input) => count + (input.checked ? 1 : 0), 0);
+          if (checkedCount === 0) {
+            filterInputs[0].checked = true;
+          }
+          if (filterInputs[0].checked) {
+            delClassAll(filterWrap, 'filtered-inclusive');
+            delClassAll([noItemElement], 'filter-no-item-active');
+          }
+        }, 500);
+      }
+    });
+  }
+
+
+// Initialize content filter for '#ProjectTagFilter' using inclusive filtering
+contentFilter('#ProjectTagFilter');
+
+</script> 
+
+
+
+</body>
+</html>	

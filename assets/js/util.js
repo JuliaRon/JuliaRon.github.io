@@ -584,4 +584,99 @@
 
 	};
 
+
+	// Helper functions for class manipulation
+	function addClassAll(elements, className) {
+		elements.forEach(element => {
+		if (!element.classList.contains(className)) {
+			element.classList.add(className);
+		}
+		});
+	}
+
+	function delClassAll(elements, className) {
+		elements.forEach(element => {
+		element.classList.remove(className);
+		});
+	}
+
+	// Content filtering function
+	function contentFilter(filterId) {
+		const filterElement = document.querySelector(filterId);
+		const categoriesContainer = filterElement.querySelector('.filter-categories');
+		const filterWrap = filterElement.querySelectorAll('.filter-wrap');
+		const filterItems = filterElement.querySelectorAll('.filter-item');
+		const filterInputs = filterElement.querySelectorAll('.filter-input');
+		const noItemElement = filterElement.querySelector('.filter-no-item');
+		const filterMask = filterElement.querySelector('.filter-mask');
+
+		categoriesContainer.addEventListener('click', (event) => {
+		const clickedElement = event.target;
+		const selectedFilters = [];
+
+		// Visual feedback
+		addClassAll([filterMask], 'filter-mask-active');
+		setTimeout(() => {
+			delClassAll([filterMask], 'filter-mask-active');
+		}, 1000);
+
+		if (clickedElement.classList.contains('filter-all')) {
+			// Uncheck all other filters
+			filterInputs.forEach((input, index) => {
+			if (index !== 0) {
+				input.checked = false;
+			}
+			});
+
+			// Reset filter state
+			setTimeout(() => {
+			delClassAll(filterItems, 'selected');
+			delClassAll(filterWrap, 'filtered-inclusive');
+			delClassAll([noItemElement], 'filter-no-item-active');
+			}, 500);
+
+		} else {
+			// Uncheck "Filter All"
+			filterInputs[0].checked = false;
+
+			// Collect checked filter IDs
+			filterInputs.forEach((input, index) => {
+			if (index !== 0 && input.checked) {
+				selectedFilters.push(input.id);
+			}
+			});
+
+			// Update filter state based on inclusive filter type
+			setTimeout(() => {
+			delClassAll(filterItems, 'selected');
+			addClassAll(filterWrap, 'filtered-inclusive');
+
+			if (selectedFilters.length > 0) {
+				addClassAll(filterElement.querySelectorAll(`.filter-item.${selectedFilters.join('.')}`), 'selected');
+			}
+
+			if (filterElement.querySelectorAll('.selected').length === 0) {
+				addClassAll([noItemElement], 'filter-no-item-active');
+			} else {
+				delClassAll([noItemElement], 'filter-no-item-active');
+			}
+
+			// Check if any filters are selected and re-check "Filter All"
+			const checkedCount = filterInputs.reduce((count, input) => count + (input.checked ? 1 : 0), 0);
+			if (checkedCount === 0) {
+				filterInputs[0].checked = true;
+			}
+			if (filterInputs[0].checked) {
+				delClassAll(filterWrap, 'filtered-inclusive');
+				delClassAll([noItemElement], 'filter-no-item-active');
+			}
+			}, 500);
+		}
+		});
+	}
+
+
+	// Make the contentFilter function available globally
+	$.contentFilter = contentFilter;
+
 })(jQuery);

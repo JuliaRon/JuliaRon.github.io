@@ -2769,6 +2769,33 @@ input, select, textarea {
 						margin-bottom: 0;
 					}
 
+
+
+
+
+
+
+
+			.tiles article > tags {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 1em;
+				border-radius: 8px;
+				border-bottom: 0;
+				color: #ffffff;
+				
+				text-align: center;
+				text-decoration: none;
+				z-index: 3;
+			}
+
+				.tiles article > tags > :last-child {
+					margin: 0;
+				}
+
+
 			/* .tiles article.style1 > .image:before {
 				/* background-image: url(images\userTestPicture.png); 
 				background-color: #00000017;
@@ -2814,6 +2841,7 @@ input, select, textarea {
 				max-height: 15em;
 				opacity: 1;
 			}
+
 
 			body:not(.is-touch) .tiles article:hover h2 {
 				opacity: 1;
@@ -3396,3 +3424,33 @@ input, select, textarea {
 			}
 
 		}
+
+
+		/* TODO : find a way to make filter-label text white */
+/* Filter Styles */
+.filter-label {margin-right:1em; padding:0.1em 0.5em; background:#979797; border-radius:0.25em; color: #ffffff;}
+.filter-label span { /* Target the span element within the filter-label */
+  color: #ffffff;
+}
+.filter-item ul { list-style-type:none; margin-left:0; margin-top:2em; padding:0; font-size:0.75em; color:#ffffff }
+.filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
+.info-unity { background:rgb(53, 23, 160) }
+.info-blender { background:rgb(255, 128, 0) }
+.info-csharp { background:rgb(24, 16, 255) }
+.info-python { background:rgb(0, 255, 89) }
+.info-vr { background:rgb(186, 24, 172) }
+
+.filtered-inclusive .filter-item, .filter-no-item { display:none } 
+.filtered-inclusive .filter-item.selected { display:-webkit-flexbox; display:-ms-flexbox; display:flex }  
+.filter-no-item.filter-no-item-active { display:block; width:100%; background:#fcc; color:red; padding:1em 1.5em; margin:0.75% }
+.filter-mask-active { position:absolute; top:0; left:0; bottom:0; right:0; -webkit-animation:filterMask 1s ease-in-out both; animation:filterMask 1s ease-in-out both }
+@-webkit-keyframes filterMask { 
+  0% { background:transparent } 
+  50% { background:#fff } 
+  100% { background:transparent } 
+}
+@keyframes filterMask { 
+  0% { background:transparent } 
+  50% { background:#fff } 
+  100% { background:transparent } 
+}
