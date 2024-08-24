@@ -2230,9 +2230,9 @@ input, select, textarea {
 			display: inline-block;
 			font-size: 1em;
 			font-weight: 300;
-			padding-left: 2.55em;
+			padding-left: 0.75em;
 			padding-right: 0.75em;
-			position: relative;
+			/* position: relative; */
 		}
 
 			input[type="checkbox"] + label:before,
@@ -3428,22 +3428,55 @@ input, select, textarea {
 
 		/* TODO : find a way to make filter-label text white */
 /* Filter Styles */
-.filter-label {margin-right:1em; padding:0.1em 0.5em; background:#979797; border-radius:0.25em; color: #ffffff;}
-.filter-label span { /* Target the span element within the filter-label */
-  color: #ffffff;
+/* Filter Styles */
+#ProjectTagFilter .filter-categories {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	/* justify-content: center; */
 }
-.filter-item ul { list-style-type:none; margin-left:0; margin-top:2em; padding:0; font-size:0.75em; color:#ffffff }
-.filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
-.info-unity { background: #333333; }
-.info-blender { background: #F5792A; } 
-.info-csharp { background: #599EE3; } /* Azure Blue - No change needed */
-.info-python { background: #3776AB; } /* Deeper Python Blue */
 
-.info-vr { background: #7828B4; }    /*  Purple hue for VR/MR/AR */
-.info-mr { background: #9B30FF; }    /*  Distinct shades within the purple spectrum */ 
-.info-ar { background: #C274FF; }    /*  Lightest for AR */
+#ProjectTagFilter .filter-text {
+	font-weight: bold;
+	margin-right: 10px;
+}
 
-.info-handtracking { background: #E74C3C; } /* Keeping this - good contrast */
+#ProjectTagFilter .filter-label {
+	display: inline-block;
+	border-radius:0.25em;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+#ProjectTagFilter .filter-label:hover,
+#ProjectTagFilter .filter-label:focus {
+	background-color: #ddd;
+}
+
+#ProjectTagFilter .filter-input:checked + .filter-label {
+	font-weight: bold;
+	border: solid black 2px;
+	margin-top: -4px;
+}
+
+
+#ProjectTagFilter .filter-item ul { list-style-type:none; margin-left:0; margin-top:2em; padding:0; font-size:0.75em; color:#ffffff }
+#ProjectTagFilter .filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
+
+#ProjectTagFilter .info-unity { background: #333333; color: #fff; }
+#ProjectTagFilter .info-blender { background: #F5792A; color: #fff; } 
+#ProjectTagFilter .info-csharp { background: #599EE3; color: #fff; }
+#ProjectTagFilter .info-python { background: #3776AB; color: #fff; }
+
+#ProjectTagFilter .info-vr { background: #7828B4; color: #fff; }  
+#ProjectTagFilter .info-mr { background: #9B30FF; color: #fff; }  
+#ProjectTagFilter .info-ar { background: #C274FF; color: #fff; } 
+
+#ProjectTagFilter .info-handtracking { background: #50C878; color: #fff; }
+
+#ProjectTagFilter .filter-all {background-color: #F2F2F2; color: #333;}
 
 
 .filtered-inclusive .filter-item, .filter-no-item { display:none } 
