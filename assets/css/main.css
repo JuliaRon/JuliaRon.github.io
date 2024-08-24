@@ -3434,11 +3434,17 @@ input, select, textarea {
 }
 .filter-item ul { list-style-type:none; margin-left:0; margin-top:2em; padding:0; font-size:0.75em; color:#ffffff }
 .filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
-.info-unity { background:rgb(53, 23, 160) }
-.info-blender { background:rgb(255, 128, 0) }
-.info-csharp { background:rgb(24, 16, 255) }
-.info-python { background:rgb(0, 255, 89) }
-.info-vr { background:rgb(186, 24, 172) }
+.info-unity { background: #333333; }
+.info-blender { background: #F5792A; } 
+.info-csharp { background: #599EE3; } /* Azure Blue - No change needed */
+.info-python { background: #3776AB; } /* Deeper Python Blue */
+
+.info-vr { background: #7828B4; }    /*  Purple hue for VR/MR/AR */
+.info-mr { background: #9B30FF; }    /*  Distinct shades within the purple spectrum */ 
+.info-ar { background: #C274FF; }    /*  Lightest for AR */
+
+.info-handtracking { background: #E74C3C; } /* Keeping this - good contrast */
+
 
 .filtered-inclusive .filter-item, .filter-no-item { display:none } 
 .filtered-inclusive .filter-item.selected { display:-webkit-flexbox; display:-ms-flexbox; display:flex }  
