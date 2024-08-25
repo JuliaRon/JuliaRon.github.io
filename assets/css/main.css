@@ -2742,6 +2742,11 @@ input, select, textarea {
 				}
 
 				.tiles article > a h2 {
+					-moz-transition: padding-top 0.5s ease;
+					-webkit-transition: padding-top 0.5s ease;
+					-ms-transition: padding-top 0.5s ease;
+					transition: padding-top 0.5s ease;
+					padding-top: 50%;
 					margin: 0;
 					letter-spacing: 0.25em;
 					font-size: 1.2em;
@@ -2844,6 +2849,7 @@ input, select, textarea {
 
 
 			body:not(.is-touch) .tiles article:hover h2 {
+				padding-top: 0;
 				opacity: 1;
 			}
 
@@ -3517,6 +3523,7 @@ input, select, textarea {
   100% { background:transparent } 
 }
 
+
 @media screen and (max-width: 1680px) {
 
 	#ProjectTagFilter .filter-categories {margin-bottom: -50px;}
@@ -3537,6 +3544,7 @@ input, select, textarea {
 @media screen and (max-width: 736px) {
 
 	#ProjectTagFilter .filter-categories {margin-bottom: 10px;}
+	/* #ProjectTagFilter .filter-item ul { font-size: 0.5em } */
 
 }
 
