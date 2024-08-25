@@ -587,92 +587,81 @@
 
 	// Helper functions for class manipulation
 	function addClassAll(elements, className) {
-		elements.forEach(element => {
-		if (!element.classList.contains(className)) {
-			element.classList.add(className);
+		for (var i = 0; i < elements.length; ++i) {
+			if (!elements[i].classList.contains(className)) {
+				elements[i].classList.add(className);
+			}
 		}
-		});
 	}
 
 	function delClassAll(elements, className) {
-		elements.forEach(element => {
-		element.classList.remove(className);
-		});
+		for (var i = 0; i < elements.length; ++i) {
+			elements[i].classList.remove(className);
+		}
 	}
 
-	// Content filtering function
-	function contentFilter(filterId) {
-		const filterElement = document.querySelector(filterId);
-		const categoriesContainer = filterElement.querySelector('.filter-categories');
-		const filterWrap = filterElement.querySelectorAll('.filter-wrap');
-		const filterItems = filterElement.querySelectorAll('.filter-item');
-		const filterInputs = filterElement.querySelectorAll('.filter-input');
-		const noItemElement = filterElement.querySelector('.filter-no-item');
-		const filterMask = filterElement.querySelector('.filter-mask');
+	function contentFilter(filterID) {
+		var id = filterID;
 
-		categoriesContainer.addEventListener('click', (event) => {
-		const clickedElement = event.target;
-		const selectedFilters = [];
+		document.querySelector(id + ' .filter-categories').onclick = function (evt) {
+			evt = evt || window.event;
+			var elem = evt.target || evt.srcElement,
+				wrap = document.querySelectorAll(id + ' .filter-wrap'),
+				items = document.querySelectorAll(id + ' .filter-item'),
+				inputs = document.querySelectorAll(id + ' .filter-input'),
+				filters = [],
+				noitem = document.querySelectorAll(id + ' .filter-no-item'),
+				mask = document.querySelectorAll(id + ' .filter-mask');
 
-		// Visual feedback
-		addClassAll([filterMask], 'filter-mask-active');
-		setTimeout(() => {
-			delClassAll([filterMask], 'filter-mask-active');
-		}, 1000);
+			addClassAll(mask, 'filter-mask-active');
+			setTimeout(function () { delClassAll(mask, 'filter-mask-active'); }, 1000);
 
-		if (clickedElement.classList.contains('filter-all')) {
-			// Uncheck all other filters
-			filterInputs.forEach((input, index) => {
-			if (index !== 0) {
-				input.checked = false;
-			}
-			});
-
-			// Reset filter state
-			setTimeout(() => {
-			delClassAll(filterItems, 'selected');
-			delClassAll(filterWrap, 'filtered-inclusive');
-			delClassAll([noItemElement], 'filter-no-item-active');
-			}, 500);
-
-		} else {
-			// Uncheck "Filter All"
-			filterInputs[0].checked = false;
-
-			// Collect checked filter IDs
-			filterInputs.forEach((input, index) => {
-			if (index !== 0 && input.checked) {
-				selectedFilters.push(input.id);
-			}
-			});
-
-			// Update filter state based on inclusive filter type
-			setTimeout(() => {
-			delClassAll(filterItems, 'selected');
-			addClassAll(filterWrap, 'filtered-inclusive');
-
-			if (selectedFilters.length > 0) {
-				addClassAll(filterElement.querySelectorAll(`.filter-item.${selectedFilters.join('.')}`), 'selected');
-			}
-
-			if (filterElement.querySelectorAll('.selected').length === 0) {
-				addClassAll([noItemElement], 'filter-no-item-active');
+			if (elem.classList.contains('filter-all')) {
+				// 'filter-all' was clicked
+				for (var i = 1; i < inputs.length; ++i) {
+					inputs[i].checked = false; // uncheck all other inputs
+				}
+				setTimeout(function () {
+					delClassAll(items, 'selected');
+					delClassAll(wrap, 'filtered-inclusive');
+					delClassAll(noitem, 'filter-no-item-active');
+				}, 500);
 			} else {
-				delClassAll([noItemElement], 'filter-no-item-active');
-			}
+				// Another filter is checked
+				inputs[0].checked = false; // uncheck 'filter-all'
+				for (var i = 1; i < inputs.length; ++i) {
+					if (inputs[i].checked) {
+						filters.push(inputs[i].id);
+					}
+				}
+				setTimeout(function () {
+					delClassAll(items, 'selected');
+					addClassAll(wrap, 'filtered-inclusive');
+					
+					if (filters.length > 0) {
+						addClassAll(document.querySelectorAll(id + ' .filter-item.' + filters.join('.')), 'selected');
+					}
+					
+					if (document.querySelectorAll(id + ' .selected').length === 0) {
+						addClassAll(noitem, 'filter-no-item-active');
+					} else {
+						delClassAll(noitem, 'filter-no-item-active');
+					}
 
-			// Check if any filters are selected and re-check "Filter All"
-			const checkedCount = filterInputs.reduce((count, input) => count + (input.checked ? 1 : 0), 0);
-			if (checkedCount === 0) {
-				filterInputs[0].checked = true;
+					var checkCount = 0;
+					for (var i = 0; i < inputs.length; ++i) {
+						checkCount += inputs[i].checked ? 1 : 0;
+					}
+					if (checkCount === 0) {
+						inputs[0].checked = true;
+					}
+					if (inputs[0].checked) {
+						delClassAll(wrap, 'filtered-inclusive');
+						delClassAll(noitem, 'filter-no-item-active');
+					}
+				}, 500);
 			}
-			if (filterInputs[0].checked) {
-				delClassAll(filterWrap, 'filtered-inclusive');
-				delClassAll([noItemElement], 'filter-no-item-active');
-			}
-			}, 500);
-		}
-		});
+		};
 	}
 
 

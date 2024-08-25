@@ -2208,7 +2208,7 @@ input, select, textarea {
 		min-height: 3.75em;
 	}
 
-	input[type="checkbox"],
+	/* input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2232,7 +2232,7 @@ input, select, textarea {
 			font-weight: 300;
 			padding-left: 0.75em;
 			padding-right: 0.75em;
-			/* position: relative; */
+			/* position: relative; 
 		}
 
 			input[type="checkbox"] + label:before,
@@ -2285,7 +2285,7 @@ input, select, textarea {
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;
-	}
+	} */
 
 /* Box */
 
@@ -3432,8 +3432,12 @@ input, select, textarea {
 #ProjectTagFilter .filter-categories {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	/* gap: 10px; */
 	/* justify-content: center; */
+}
+
+#ProjectTagFilter .filter-categories input {
+	opacity: 0;
 }
 
 #ProjectTagFilter .filter-text {
@@ -3446,6 +3450,9 @@ input, select, textarea {
 	border-radius:0.25em;
 	cursor: pointer;
 	transition: background-color 0.3s ease, color 0.3s ease;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	font-weight: normal;
 }
 
 
@@ -3493,3 +3500,32 @@ input, select, textarea {
   50% { background:#fff } 
   100% { background:transparent } 
 }
+
+@media screen and (max-width: 1680px) {
+
+	#ProjectTagFilter .filter-categories {margin-bottom: -50px;}
+
+}
+
+@media screen and (max-width: 1280px) {
+
+	#ProjectTagFilter .filter-categories {margin-bottom: 10px;}
+}
+
+@media screen and (max-width: 980px) {
+
+	#ProjectTagFilter .filter-categories {margin-bottom: 30px;}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	#ProjectTagFilter .filter-categories {margin-bottom: 10px;}
+
+}
+
+/* @media screen and (max-width: 360px) {
+
+	#ProjectTagFilter .filter-categories {margin-bottom: 100px;}
+
+} */
