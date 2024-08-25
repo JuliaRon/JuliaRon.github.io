@@ -2762,7 +2762,7 @@ input, select, textarea {
 					line-height: 1.5;
 					margin-top: 0.35em;
 					opacity: 0;
-					text-shadow: 1px 1px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000;
+					text-shadow: 0.5px 0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000;
 				}
 
 					.tiles article > a .content > :last-child {
@@ -2920,6 +2920,22 @@ input, select, textarea {
 					width: 100%;
 					margin: 1.25em 0 0 0;
 				}
+
+				.tiles article > a h2.invisibleAtFirst  {
+					opacity: 1;
+				}
+
+				.tiles article > a .content {
+					padding-top: 1%;
+					padding-bottom: 1%;
+					background-color: #333333df;
+					border-radius: 0.5em;
+				}
+
+				/* body .tiles article > .image:before {
+					background-color: #333333;
+					opacity: 0.5;
+				} */
 
 		}
 
