@@ -3495,15 +3495,15 @@ input, select, textarea {
 #ProjectTagFilter .filter-item li { display:inline-block; line-height:2; padding:0 2%; border-radius:0.25em }
 
 #ProjectTagFilter .info-unity { background: #333333; color: #fff; }
-#ProjectTagFilter .info-blender { background: #F5792A; color: #fff; } 
-#ProjectTagFilter .info-csharp { background: #599EE3; color: #fff; }
-#ProjectTagFilter .info-python { background: #3776AB; color: #fff; }
+#ProjectTagFilter .info-blender { background: #412819; color: #fff; } 
+#ProjectTagFilter .info-csharp { background: #31577d; color: #fff; }
+#ProjectTagFilter .info-python { background: #214667; color: #fff; }
 
-#ProjectTagFilter .info-vr { background: #7828B4; color: #fff; }  
-#ProjectTagFilter .info-mr { background: #9B30FF; color: #fff; }  
-#ProjectTagFilter .info-ar { background: #C274FF; color: #fff; } 
+#ProjectTagFilter .info-vr { background: #250d37; color: #fff; }  
+#ProjectTagFilter .info-mr { background: #39125e; color: #fff; }  
+#ProjectTagFilter .info-ar { background: #432756; color: #fff; } 
 
-#ProjectTagFilter .info-handtracking { background: #50C878; color: #fff; }
+#ProjectTagFilter .info-handtracking { background: #265e38; color: #fff; }
 
 #ProjectTagFilter .filter-all {background-color: #F2F2F2; color: #333;}
 
