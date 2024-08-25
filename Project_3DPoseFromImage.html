@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>3D Pose from Single Image - Julia Ronneberger</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<!--<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Julia Ronneberger</span> -->
+									<span class="title">Julia Ronneberger</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index">Home</a></li>
+						<li><a href="About">About</a></li>
+						<li><a href="index#projects">Projects</a></li>
+						<li><a href="Contact">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>3D Pose Estimation from a single 2D Image</h1>
+							
+							 <p> My Master's Project for my MEng in Mathematical Computation involved researching and implementing different methods for predicting 3D poses from images.
+								During the project, I gained knowledge in computer vision, machine learning, designing and training networks and data manipulation.
+							 </p>
+
+							 <span class="image main"><img src="images/PoseFromImage.png" alt="" /></span>
+							
+							 <h3>Abstract:</h3>
+							 <p> Building a 3D scene from a 2D image finds an application in many different fields, such as robotics and computer vision. 
+								My Project focuses on a subtopic of that, namely the challenge of getting an object's 3D Pose Estimation from a single 2D image. 
+								Because of limited amounts of training data, many methods rely on synthetic, rendered images.
+							</p>
+							<p>
+								The method proposed here works solely on real images, exploiting similarities between different shape classes. It is based on <a href="#Citation1">[1]</a> and predicts the closest shape out of a model database and estimates the corresponding 3D rotation from a single image.
+								This is done in two stages, where in the first stage, a general embedding is learnt from the volumetric representations of the available shapes, and in the second stage an image is mapped to the embedding. 
+								<br>
+								This achieves good results on the 'in the wild' dataset PASCAL3D+.
+							</p>
+							<p>
+								The proposed method also outputs an uncertainty value and therefore makes it easier to 
+								spot rotational ambiguities of the pose.
+								In future, this could for example provide a robot with more accurate instructions on how to interact with the environment, by better assessing its possible actions.
+							</p>
+							<p>
+								My implementation takes only several hours to train on a single GPU, which makes it ideal for quickly testing new hypotheses.
+								
+							</p>
+							<p>
+								Find the code on <a href="https://github.com/JuliaRon/Masterproject-3D_pose_estimation">Github</a>.
+								<br>
+								Read more in my <a href="https://drive.google.com/file/d/1OpgK1Rz_Lf5pIoum7HPea1iHqQkVvw0s/view?usp=sharing">Master Project Report</a>.
+								
+							</p>
+
+							<span class="image main"><img src="images/PoseFromImageMethod.png" alt="" /></span>
+							
+							<p id="Citation1">[1] 
+								Kyaw Zaw Lin, Weipeng Xu, Qianru Sun, Christian Theobalt, and Tat-Seng Chua.
+								Learning a Disentangled Embedding for Monocular 3D Shape Retrieval and Pose Estimation. arXiv e-prints, page arXiv:1812.09899, December 2018. 
+							</p>
+							
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+						<h2>Contact</h2>
+						
+						<p>
+							<b>Email</b>: <a href="mailto:julia@ronneberger.net">julia@ronneberger.net</a>
+							<br><b>Linkedin</b>: <a href="https://www.linkedin.com/in/julia-ronneberger/">Julia Ronneberger</a>
+							<br><b>Github</b>: <a href="https://github.com/JuliaRon">JuliaRon</a>
+						</p>
+					</section>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
