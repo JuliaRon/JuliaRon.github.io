@@ -2528,6 +2528,20 @@ input, select, textarea {
 				border-top: 0;
 			}
 
+
+			.image-table {
+				display: flex;  /* Aligns images in a row */
+				justify-content: center;  /* Centers them horizontally */
+				gap: 10px;  /* Adds spacing between images */
+			}
+			
+			.image-table img {
+				height: 200px;  /* Set a fixed height */
+				width: auto;  /* Maintain aspect ratio */
+				object-fit: cover;  /* Ensures images fill their space nicely */
+				border-radius: 4px; /* Optional: rounded corners */
+			}
+
 /* Button */
 
 	input[type="submit"],
