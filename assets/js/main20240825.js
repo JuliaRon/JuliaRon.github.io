@@ -188,4 +188,32 @@
 				$.contentFilter('#ProjectTagFilter');
 			});
 
+
+			document.addEventListener("DOMContentLoaded", function () {
+				const lightboxLinks = document.querySelectorAll(".lightbox");
+				
+				// Create lightbox overlay
+				const lightboxOverlay = document.createElement("div");
+				lightboxOverlay.classList.add("lightbox-overlay");
+				document.body.appendChild(lightboxOverlay);
+				
+				const lightboxImage = document.createElement("img");
+				lightboxOverlay.appendChild(lightboxImage);
+			
+				// Open lightbox on image click
+				lightboxLinks.forEach(link => {
+					link.addEventListener("click", function (e) {
+						e.preventDefault();
+						const imgSrc = this.getAttribute("href");
+						lightboxImage.setAttribute("src", imgSrc);
+						lightboxOverlay.classList.add("active");
+					});
+				});
+			
+				// Close lightbox when clicked
+				lightboxOverlay.addEventListener("click", function () {
+					lightboxOverlay.classList.remove("active");
+				});
+			});
+
 })(jQuery);
