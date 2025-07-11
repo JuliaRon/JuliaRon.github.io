@@ -3579,6 +3579,7 @@ input, select, textarea {
 #ProjectTagFilter .info-blender { background: #412819; color: #fff; } 
 #ProjectTagFilter .info-csharp { background: #31577d; color: #fff; }
 #ProjectTagFilter .info-python { background: #214667; color: #fff; }
+#ProjectTagFilter .info-other { background: #033057; color: #fff; }
 
 #ProjectTagFilter .info-vr { background: #250d37; color: #fff; }  
 #ProjectTagFilter .info-mr { background: #39125e; color: #fff; }  
